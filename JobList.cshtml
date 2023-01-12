@@ -1,0 +1,23 @@
+
+                <div class="content-list joblist">
+                  <ol class="media-list">
+				  @foreach (Sitecore.Data.Items.Item item in Model.Item.Children["Jobs"].Children)
+				  {
+                    <li class="media">
+                      <div class="media-body">
+                        <h3 class="media-heading">
+                          <a href="@Sitecore.Links.LinkManager.GetItemUrl(item)"> @Html.Sitecore().Field("Heading",item) </a>
+                        </h3>
+                        <div class="description">
+                          <p>
+                            @Html.Sitecore().Field("Intro",item)
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+				  }
+
+					
+                  </ol>
+                </div>
+              

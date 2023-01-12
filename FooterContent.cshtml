@@ -1,0 +1,55 @@
+@{
+Sitecore.Data.Fields.ReferenceField mainitemfield= Model.Item.Fields["Main item"];
+var mainitem = mainitemfield.TargetItem;
+Sitecore.Data.Fields.MultilistField otherlinksfield= Model.Item.Fields["Other links"];
+
+var otheritems = otherlinksfield.GetItems();
+} 
+
+ <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <!-- [About Us] -->
+              <div class="well">
+                <h4>@Html.Sitecore().Field("Heading",mainitem)</h4>
+                <p>
+                  The Adventure Company is a nonprofit organization. In each
+                  location where we sponsor events, we carefully vet local
+                  conservation organizations so that our members have the
+                  opportunity to donate their money where it will do the most
+                  good on a local level.
+                </p>
+              </div>
+              <!-- [/About Us] -->
+            </div>
+            <div class="col-md-4">
+              <!-- [Meta Navigation] -->
+				<ul class="nav nav-stacked">
+				@foreach (var otherItem in otheritems)
+				{
+				<li class="">
+				<a href="@Sitecore.Links.LinkManager.GetItemUrl(otherItem)" title="Legal Notice">
+				@Html.Sitecore().Field("Heading",otherItem)
+				</a>
+				</li>
+				}
+				</ul>
+              <!-- [/Meta Navigation] -->
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom text-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <small class="copyright">
+                  <span style="line-height: 17.1428px"
+                    >@Html.Sitecore().Field("Copyright")</span
+                  >
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
